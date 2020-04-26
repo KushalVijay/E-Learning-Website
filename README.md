@@ -1,5 +1,5 @@
 # E-Learning-Website
-E-Learning Website using Django
+E-Learning Website
 Django Webapp for Students and Teachers to manage their School work.
 Teachers can add subjects , topics and questions accordingly for students and grade the answers on the basis of the student responses.
 Students can answer questions provided by the teachers and can check their grades once marked by the teacher.
