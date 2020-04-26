@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+{% if student_answers %}
+<br><br>
+<div class="container" align="center">
+    <h2><strong>Student Details</strong></h2>
+</div>
+
+    <div class="row">
+    <form method="POST" action="{% url 'feedback' %}">{% csrf_token %}
+        <input type="hidden" name="student_username" value={{ student_username }}>
+            {% for student in student_answers  %}
+
+                      <div class="form-group">
+                        <label for="question"> {{ student.course_id }}</label>
+                        <label for="question">Q. {{ student.question_statement }}</label>
+                        <label for="question">Ans. {{ student.answer }}</label>
+
+                        <input style="" type="text" size="100" class="form-control" name="{{ student.question_statement }}" placeholder="Feedback" required>
+                      </div>
+            <hr>
+            {% endfor %}
+        <br>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+
+{% endif %}
+{% endblock %}

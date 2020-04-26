@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2><p><b>Welcome {{ user.username }}</b> </p></h2>
+{% if students_list %}
+<div class="container" align="center">
+    <h2><strong>List of Students</strong></h2>
+</div>
+
+    <div>
+            {% for student in students_list %}
+
+                      <form method='POST' action="{% url 'student_details' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="student_username" value="{{ student.username }}">
+                        <button type="submit" class="btn btn-link btn-sm" style="padding: 0px;cursor: pointer;"><h3>{{student.username}} </h3><br>
+                        </button>
+                        </form>
+            <hr>
+            {% endfor %}
+    </div>
+{% elif student_answer %}
+<br><br>
+<div class="container" align="center">
+    <h2><strong>My Grades</strong></h2>
+</div>
+
+        <div >
+            {% for question in student_answer  %}
+
+                      <div class="form-group">
+                        <label for="question">Course ID : {{ question.course_id }}   </label><br>
+                        <label for="question">Q. {{ question.question_statement }}</label><br>
+                        <label for="question">Ans. {{ question.answer }}</label><br>
+                        <label for="question">Remark : {{ question.remark }}</label>
+                          <hr>
+                      </div>
+                        <br>
+
+            {% endfor %}
+
+        </div>
+{% endif %}
+{% endblock %}

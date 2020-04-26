@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="container" align="center">
+    <h2><strong>Learning Material</strong></h2>
+</div>
+
+    <div class="row row-flex">
+        {% for topic in topics  %}
+
+            <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-3 col-md-3 display panel panel-defualt ">
+
+                <div class="panel-body">
+                    <form method="post" action="{% url 'learning_detail' %}">
+                        <input type="hidden" name="topic_id" value ={{ topic.id }}>
+                        {% csrf_token %}
+                        <p class="text-center">{{ topic.name }}</p>
+                        <div class="input-group" align="center">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit">Read</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

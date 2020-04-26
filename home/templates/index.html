@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br>
+<h3 align="center" style="color: black)"><B>Text details</B> </h3>
+
+  <div class="container">
+      <div class="row"><br></div>
+      <div class="row"><br></div>
+  <div class="row">
+    <div class="col-sm-3" >
+    </div>
+      <div class="col-sm-2" >
+    <a href="{% url 'login' %}"><button class="button button1"><b><strong>STUDENT LOGIN</strong></b></button></a>
+    </div>
+      <div class="col-sm-1" >
+    </div>
+      <div class="col-sm-1" >
+    </div>
+      <div class="col-sm-2"  >
+        <a href="{% url 'login' %}"><button class="button button2"><b><strong>TEACHER LOGIN</strong></b></button></a>
+    </div>
+    <div class="col-sm-4" >
+       </div>
+  </div>
+</div>
+{% endblock %}

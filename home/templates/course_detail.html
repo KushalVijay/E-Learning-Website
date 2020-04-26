@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="container" align="center">
+    <h2><strong>Questions in Course {{ course_id }}</strong></h2>
+</div>
+
+    <div class="row row-flex">
+<form method="POST" action="{% url 'submission' %}">{% csrf_token %}
+        {% for question in questions  %}
+
+                  <div class="form-group">
+                    <label for="question">{{ question.statement }}</label>
+                    <input style="" type="text" size="100" class="form-control" name="{{ question.statement }}" placeholder="Answer here" required>
+                  </div>
+
+
+        {% endfor %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="hidden" name="course_id" value ={{ course_id }}>
+            </form>
+    </div>
+{% endblock %}

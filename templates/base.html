@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{% static 'images/logo.jpg' %}">
+    <title>Cfastraining</title>
+<!--    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block head_js %}
+    {% endblock head_js %}
+</head>
+
+<body>
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <a href="{% url 'index' %}">
+                        <h2><i class="fa fa-object-ungroup"  aria-hidden="true"></i> Cfastraining </h2>
+                    </a>
+                </div>
+<!--                <div class="modal-body">-->
+<!--                    <p>With a subscription service of ₹5 a month, you can get an unlimited number of book summaries,-->
+<!--                       saving you time and money in the process. If you are just interested in one particular summary, our-->
+<!--                       online shop allows you to purchase without having to sign up for the subsscription service.-->
+<!--                    </p>-->
+<!--                </div>-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+         </div>
+    </div>
+
+    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
+
+        <div class="container">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="/">
+
+            <img src="{% static 'images/logo.jpg' %}" width="30" height="30" align="left"  alt="">
+                 <strong><font color="white"> &nbsp;&nbsp; Cfastraining </font> </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            </a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+
+                <ul class="nav navbar-nav navbar-center">
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> &nbsp;&nbsp;Profile</a></li>
+
+                        {% endif %}
+
+                        <li><a href="{% url 'index' %}"><i class="fa fa-home"></i>&nbsp;&nbsp;Home</a></li>
+                        <li><a href="{% url 'courses' %}"><i class="fa fa-university"></i>&nbsp;&nbsp;Courses</a></li>
+
+                        <li><a href="{% url 'learning' %}"><i class="fa fa-graduation-cap"></i> &nbsp;&nbsp;Learning</a></li>
+                        <li><a href="{% url 'news' %}"><i class="fa fa-newspaper-o"></i> &nbsp;&nbsp;News</a></li>
+
+                        {% if user.is_authenticated %}
+
+                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> &nbsp;&nbsp;Log Out</a></li>
+                        {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer>
+        <div class="container text-center">
+            <p>Copyrights Reserved 2019</p>
+        </div>
+    </footer>
+</body>
+</html>
